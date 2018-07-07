@@ -1,2 +1,2 @@
 # atlas-xboxapi
-Simple xboxapi.com wrapper.
+Simple c# wrapper for xboxapi.com.
