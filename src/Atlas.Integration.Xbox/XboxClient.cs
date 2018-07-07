@@ -12,9 +12,10 @@ namespace Atlas.Integration.Xbox
 
         public XboxClient(HttpClient client)
         {
+            client.BaseAddress = new Uri("https://xboxapi.com/v2/");
+            client.DefaultRequestHeaders.Add("X-Auth", "");
+
             this.client = client;
-            this.client.BaseAddress = new Uri("https://xboxapi.com/v2/");
-            this.client.DefaultRequestHeaders.Add("X-Auth", "");
         }
 
         public async Task<long> GetXuid(string gamertag)
