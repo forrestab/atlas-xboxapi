@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8312087B-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Integration.Xbox", "src\Atlas.Integration.Xbox\Atlas.Integration.Xbox.csproj", "{91BDB8D0-68A2-4E82-A6C8-5188A0F217BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Integration.Xbox.Test", "test\Atlas.Integration.Xbox.Test\Atlas.Integration.Xbox.Test.csproj", "{C4C508E8-A0F0-4154-91D0-86E61FC2CC07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{91BDB8D0-68A2-4E82-A6C8-5188A0F217BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91BDB8D0-68A2-4E82-A6C8-5188A0F217BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91BDB8D0-68A2-4E82-A6C8-5188A0F217BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4C508E8-A0F0-4154-91D0-86E61FC2CC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4C508E8-A0F0-4154-91D0-86E61FC2CC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4C508E8-A0F0-4154-91D0-86E61FC2CC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4C508E8-A0F0-4154-91D0-86E61FC2CC07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{91BDB8D0-68A2-4E82-A6C8-5188A0F217BB} = {204FCF92-BF00-4E84-BEFD-2082992B2824}
+		{C4C508E8-A0F0-4154-91D0-86E61FC2CC07} = {8312087B-04CE-4A30-B244-C53F8225207F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BB6F3E5-CC61-4654-A912-115DE947C7BD}
