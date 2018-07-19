@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Atlas.Integration.Xbox.Models;
+using Moq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -30,6 +31,25 @@ namespace Atlas.Integration.Xbox.Test
                 .Returns(Task.FromResult(expected));
 
             Assert.Equal(expected, await Client.Object.GetGamertag(xuid));
+        }
+
+        [Fact]
+        public async Task GetProfile_ReturnsProfile()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            Profile Expected = new Profile()
+            {
+                Id = 1
+            };
+
+            Client
+                .Setup(s => s.GetProfile(1))
+                .Returns(Task.FromResult(new Profile()
+                {
+                    Id = 1
+                }));
+
+            Assert.Equal(Expected.Id, (await Client.Object.GetProfile(1)).Id);
         }
     }
 }

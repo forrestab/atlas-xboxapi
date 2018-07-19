@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Atlas.Integration.Xbox.Models;
+using System.Threading.Tasks;
 
 namespace Atlas.Integration.Xbox
 {
@@ -6,5 +7,6 @@ namespace Atlas.Integration.Xbox
     {
         Task<long> GetXuid(string gamertag);
         Task<string> GetGamertag(long xuid);
+        Task<Profile> GetProfile(long xuid);
     }
 }

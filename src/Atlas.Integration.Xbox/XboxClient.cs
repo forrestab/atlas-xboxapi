@@ -1,4 +1,5 @@
-﻿using Atlas.Integration.Xbox.Net.Http;
+﻿using Atlas.Integration.Xbox.Models;
+using Atlas.Integration.Xbox.Net.Http;
 using Atlas.Integration.Xbox.Utilities;
 using System;
 using System.Net.Http;
@@ -28,6 +29,11 @@ namespace Atlas.Integration.Xbox
         public async Task<string> GetGamertag(long xuid) 
         {
             return await this.client.GetAsync<string>($"gamertag/{xuid}");
+        }
+
+        public async Task<Profile> GetProfile(long xuid)
+        {
+            return await this.client.GetAsync<Profile>($"{xuid}/profile");
         }
     }
 }
