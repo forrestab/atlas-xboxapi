@@ -18,5 +18,18 @@ namespace Atlas.Integration.Xbox.Test
 
             Assert.Equal(expected, await Client.Object.GetXuid(gamertag));
         }
+
+        [Theory]
+        [InlineData(1, "desugoji")]
+        public async Task GetGamertag_ReturnsGamertag(long xuid, string expected)
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+
+            Client
+                .Setup(s => s.GetGamertag(xuid))
+                .Returns(Task.FromResult(expected));
+
+            Assert.Equal(expected, await Client.Object.GetGamertag(xuid));
+        }
     }
 }

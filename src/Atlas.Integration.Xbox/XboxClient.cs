@@ -24,5 +24,10 @@ namespace Atlas.Integration.Xbox
 
             return await this.client.GetAsync<long>($"xuid/{gamertag}");
         }
+
+        public async Task<string> GetGamertag(long xuid) 
+        {
+            return await this.client.GetAsync<string>($"gamertag/{xuid}");
+        }
     }
 }
