@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "group": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/Atlas.Integration.Xbox/Atlas.Integration.Xbox.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test",
+            "group": "test",
+            "presentation": {
+                "reveal": "always"
+            },
+            "command": "dotnet",
+            "args": [
+                "test",
+                "${workspaceRoot}/test/Atlas.Integration.Xbox.Test/Atlas.Integration.Xbox.Test.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
