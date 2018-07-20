@@ -70,5 +70,24 @@ namespace Atlas.Integration.Xbox.Test
 
             Assert.Equal(Expected.Gamertag, (await Client.Object.GetGamercard(1)).Gamertag);
         }
+
+        [Fact]
+        public async Task GetPresence_ReturnsPresence()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            Presence Expected = new Presence()
+            {
+                Xuid = 1
+            };
+
+            Client
+                .Setup(s => s.GetPresence(1))
+                .Returns(Task.FromResult(new Presence()
+                {
+                    Xuid = 1
+                }));
+
+            Assert.Equal(Expected.Xuid, (await Client.Object.GetPresence(1)).Xuid);
+        }
     }
 }

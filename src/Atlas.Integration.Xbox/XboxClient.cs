@@ -40,5 +40,10 @@ namespace Atlas.Integration.Xbox
         {
             return await this.client.GetAsync<Gamercard>($"{xuid}/gamercard");
         }
+
+        public async Task<Presence> GetPresence(long xuid)
+        {
+            return await this.client.GetAsync<Presence>($"{xuid}/presence");
+        }
     }
 }
