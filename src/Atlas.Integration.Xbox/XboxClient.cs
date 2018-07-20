@@ -35,5 +35,10 @@ namespace Atlas.Integration.Xbox
         {
             return await this.client.GetAsync<Profile>($"{xuid}/profile");
         }
+
+        public async Task<Gamercard> GetGamercard(long xuid)
+        {
+            return await this.client.GetAsync<Gamercard>($"{xuid}/gamercard");
+        }
     }
 }

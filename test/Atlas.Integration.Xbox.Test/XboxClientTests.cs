@@ -51,5 +51,24 @@ namespace Atlas.Integration.Xbox.Test
 
             Assert.Equal(Expected.Id, (await Client.Object.GetProfile(1)).Id);
         }
+
+        [Fact]
+        public async Task GetGamercard_ReturnsGamercard()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            Gamercard Expected = new Gamercard()
+            {
+                Gamertag = "Desugoji"
+            };
+
+            Client
+                .Setup(s => s.GetGamercard(1))
+                .Returns(Task.FromResult(new Gamercard()
+                {
+                    Gamertag = "Desugoji"
+                }));
+
+            Assert.Equal(Expected.Gamertag, (await Client.Object.GetGamercard(1)).Gamertag);
+        }
     }
 }

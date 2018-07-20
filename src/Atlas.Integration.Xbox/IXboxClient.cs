@@ -8,5 +8,6 @@ namespace Atlas.Integration.Xbox
         Task<long> GetXuid(string gamertag);
         Task<string> GetGamertag(long xuid);
         Task<Profile> GetProfile(long xuid);
+        Task<Gamercard> GetGamercard(long xuid);
     }
 }
