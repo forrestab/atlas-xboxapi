@@ -98,5 +98,18 @@ namespace Atlas.Integration.Xbox.Test
 
             Assert.Equal(Expected.ActivityItems.Count, (await Client.Object.GetActivity(1, 2)).ActivityItems.Count);
         }
+
+        [Fact]
+        public async Task GetRecentGamerActivity_ReturnsRecentGamerActivity()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            List<ActivityItem> Expected = new List<ActivityItem>();
+
+            Client
+                .Setup(s => s.GetRecentActivity(1))
+                .Returns(Task.FromResult(new List<ActivityItem>()));
+
+            Assert.Equal(Expected.Count, (await Client.Object.GetRecentActivity(1)).Count);
+        }
     }
 }

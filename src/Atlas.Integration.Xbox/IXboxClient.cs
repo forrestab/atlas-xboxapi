@@ -1,4 +1,5 @@
 ﻿using Atlas.Integration.Xbox.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Atlas.Integration.Xbox
@@ -11,5 +12,6 @@ namespace Atlas.Integration.Xbox
         Task<Gamercard> GetGamercard(long xuid);
         Task<Presence> GetPresence(long xuid);
         Task<GamerActivity> GetActivity(long xuid, long? continuationToken = null);
+        Task<List<ActivityItem>> GetRecentActivity(long xuid);
     }
 }

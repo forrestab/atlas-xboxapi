@@ -2,6 +2,7 @@
 using Atlas.Integration.Xbox.Net.Http;
 using Atlas.Integration.Xbox.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -56,6 +57,11 @@ namespace Atlas.Integration.Xbox
             }
 
             return await this.client.GetAsync<GamerActivity>(Uri);
+        }
+
+        public async Task<List<ActivityItem>> GetRecentActivity(long xuid)
+        {
+            return await this.client.GetAsync<List<ActivityItem>>($"{xuid}/activity/recent");
         }
     }
 }
