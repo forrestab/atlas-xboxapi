@@ -69,5 +69,10 @@ namespace Atlas.Integration.Xbox
         {
             return await this.client.GetAsync<List<Friend>>($"{xuid}/friends");
         }
+
+        public async Task<List<Friend>> GetFollowers(long xuid)
+        {
+            return await this.client.GetAsync<List<Friend>>($"{xuid}/followers");
+        }
     }
 }

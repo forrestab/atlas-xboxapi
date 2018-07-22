@@ -124,5 +124,18 @@ namespace Atlas.Integration.Xbox.Test
 
             Assert.Equal(Expected.Count, (await Client.Object.GetFriends(1)).Count);
         }
+
+        [Fact]
+        public async Task GetFollowers_ReturnsFollowers()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            List<Friend> Expected = new List<Friend>();
+
+            Client
+                .Setup(s => s.GetFollowers(1))
+                .Returns(Task.FromResult(new List<Friend>()));
+
+            Assert.Equal(Expected.Count, (await Client.Object.GetFollowers(1)).Count);
+        }
     }
 }
