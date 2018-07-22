@@ -26,7 +26,7 @@ namespace Atlas.Integration.Xbox
             return await this.client.GetAsync<long>($"xuid/{gamertag}");
         }
 
-        public async Task<string> GetGamertag(long xuid) 
+        public async Task<string> GetGamertag(long xuid)
         {
             return await this.client.GetAsync<string>($"gamertag/{xuid}");
         }
@@ -44,6 +44,11 @@ namespace Atlas.Integration.Xbox
         public async Task<Presence> GetPresence(long xuid)
         {
             return await this.client.GetAsync<Presence>($"{xuid}/presence");
+        }
+
+        public async Task<GamerActivity> GetActivity(long xuid)
+        {
+            return await this.client.GetAsync<GamerActivity>($"{xuid}/activity");
         }
     }
 }

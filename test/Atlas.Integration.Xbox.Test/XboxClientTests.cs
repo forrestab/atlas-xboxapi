@@ -1,5 +1,6 @@
 ﻿using Atlas.Integration.Xbox.Models;
 using Moq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -37,17 +38,11 @@ namespace Atlas.Integration.Xbox.Test
         public async Task GetProfile_ReturnsProfile()
         {
             Mock<IXboxClient> Client = new Mock<IXboxClient>();
-            Profile Expected = new Profile()
-            {
-                Id = 1
-            };
+            Profile Expected = new Profile() { Id = 1 };
 
             Client
                 .Setup(s => s.GetProfile(1))
-                .Returns(Task.FromResult(new Profile()
-                {
-                    Id = 1
-                }));
+                .Returns(Task.FromResult(new Profile() { Id = 1 }));
 
             Assert.Equal(Expected.Id, (await Client.Object.GetProfile(1)).Id);
         }
@@ -56,17 +51,11 @@ namespace Atlas.Integration.Xbox.Test
         public async Task GetGamercard_ReturnsGamercard()
         {
             Mock<IXboxClient> Client = new Mock<IXboxClient>();
-            Gamercard Expected = new Gamercard()
-            {
-                Gamertag = "Desugoji"
-            };
+            Gamercard Expected = new Gamercard() { Gamertag = "Desugoji" };
 
             Client
                 .Setup(s => s.GetGamercard(1))
-                .Returns(Task.FromResult(new Gamercard()
-                {
-                    Gamertag = "Desugoji"
-                }));
+                .Returns(Task.FromResult(new Gamercard() { Gamertag = "Desugoji" }));
 
             Assert.Equal(Expected.Gamertag, (await Client.Object.GetGamercard(1)).Gamertag);
         }
@@ -75,19 +64,26 @@ namespace Atlas.Integration.Xbox.Test
         public async Task GetPresence_ReturnsPresence()
         {
             Mock<IXboxClient> Client = new Mock<IXboxClient>();
-            Presence Expected = new Presence()
-            {
-                Xuid = 1
-            };
+            Presence Expected = new Presence() { Xuid = 1 };
 
             Client
                 .Setup(s => s.GetPresence(1))
-                .Returns(Task.FromResult(new Presence()
-                {
-                    Xuid = 1
-                }));
+                .Returns(Task.FromResult(new Presence() { Xuid = 1 }));
 
             Assert.Equal(Expected.Xuid, (await Client.Object.GetPresence(1)).Xuid);
+        }
+
+        [Fact]
+        public async Task GetGamerActivity_ReturnsGamerActivity()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            GamerActivity Expected = new GamerActivity() { ActivityItems = new List<ActivityItem>() };
+
+            Client
+                .Setup(s => s.GetActivity(1))
+                .Returns(Task.FromResult(new GamerActivity() { ActivityItems = new List<ActivityItem>() }));
+
+            Assert.Equal(Expected.ActivityItems.Count, (await Client.Object.GetActivity(1)).ActivityItems.Count);
         }
     }
 }
