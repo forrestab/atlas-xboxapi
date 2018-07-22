@@ -79,5 +79,10 @@ namespace Atlas.Integration.Xbox
         {
             return await this.client.GetAsync<List<GameClip>>($"{xuid}/game-clips");
         }
+
+        public async Task<List<GameClip>> GetSavedGameClips(long xuid)
+        {
+            return await this.client.GetAsync<List<GameClip>>($"{xuid}/game-clips/saved");
+        }
     }
 }
