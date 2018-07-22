@@ -59,9 +59,15 @@ namespace Atlas.Integration.Xbox
             return await this.client.GetAsync<GamerActivity>(Uri);
         }
 
+        // TODO, revisit returned type
         public async Task<List<ActivityItem>> GetRecentActivity(long xuid)
         {
             return await this.client.GetAsync<List<ActivityItem>>($"{xuid}/activity/recent");
+        }
+
+        public async Task<List<Friend>> GetFriends(long xuid)
+        {
+            return await this.client.GetAsync<List<Friend>>($"{xuid}/friends");
         }
     }
 }
