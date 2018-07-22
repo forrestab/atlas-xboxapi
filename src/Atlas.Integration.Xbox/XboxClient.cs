@@ -46,9 +46,16 @@ namespace Atlas.Integration.Xbox
             return await this.client.GetAsync<Presence>($"{xuid}/presence");
         }
 
-        public async Task<GamerActivity> GetActivity(long xuid)
+        public async Task<GamerActivity> GetActivity(long xuid, long? continuationToken = null)
         {
-            return await this.client.GetAsync<GamerActivity>($"{xuid}/activity");
+            string Uri = $"{xuid}/activity";
+
+            if (continuationToken.HasValue)
+            {
+                Uri += $"?contToken={continuationToken.Value}";
+            }
+
+            return await this.client.GetAsync<GamerActivity>(Uri);
         }
     }
 }

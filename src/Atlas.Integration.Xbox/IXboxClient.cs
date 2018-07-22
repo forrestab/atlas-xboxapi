@@ -10,6 +10,6 @@ namespace Atlas.Integration.Xbox
         Task<Profile> GetProfile(long xuid);
         Task<Gamercard> GetGamercard(long xuid);
         Task<Presence> GetPresence(long xuid);
-        Task<GamerActivity> GetActivity(long xuid);
+        Task<GamerActivity> GetActivity(long xuid, long? continuationToken = null);
     }
 }

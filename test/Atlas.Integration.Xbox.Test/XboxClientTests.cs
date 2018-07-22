@@ -80,10 +80,23 @@ namespace Atlas.Integration.Xbox.Test
             GamerActivity Expected = new GamerActivity() { ActivityItems = new List<ActivityItem>() };
 
             Client
-                .Setup(s => s.GetActivity(1))
+                .Setup(s => s.GetActivity(1, null))
                 .Returns(Task.FromResult(new GamerActivity() { ActivityItems = new List<ActivityItem>() }));
 
-            Assert.Equal(Expected.ActivityItems.Count, (await Client.Object.GetActivity(1)).ActivityItems.Count);
+            Assert.Equal(Expected.ActivityItems.Count, (await Client.Object.GetActivity(1, null)).ActivityItems.Count);
+        }
+
+        [Fact]
+        public async Task GetGamerActivity_ReturnsContinuedGamerActivity()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            GamerActivity Expected = new GamerActivity() { ActivityItems = new List<ActivityItem>() };
+
+            Client
+                .Setup(s => s.GetActivity(1, 2))
+                .Returns(Task.FromResult(new GamerActivity() { ActivityItems = new List<ActivityItem>() }));
+
+            Assert.Equal(Expected.ActivityItems.Count, (await Client.Object.GetActivity(1, 2)).ActivityItems.Count);
         }
     }
 }
