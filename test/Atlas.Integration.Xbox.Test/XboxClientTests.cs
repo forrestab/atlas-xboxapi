@@ -145,10 +145,23 @@ namespace Atlas.Integration.Xbox.Test
             List<GameClip> Expected = new List<GameClip>();
 
             Client
-                .Setup(s => s.GetGameClips(1))
+                .Setup(s => s.GetGameClips(1, null))
                 .Returns(Task.FromResult(new List<GameClip>()));
 
-            Assert.Equal(Expected.Count, (await Client.Object.GetGameClips(1)).Count);
+            Assert.Equal(Expected.Count, (await Client.Object.GetGameClips(1, null)).Count);
+        }
+
+        [Fact]
+        public async Task GetGameClips_ReturnsGameClipsByTitleId()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            List<GameClip> Expected = new List<GameClip>();
+
+            Client
+                .Setup(s => s.GetGameClips(1, null))
+                .Returns(Task.FromResult(new List<GameClip>()));
+
+            Assert.Equal(Expected.Count, (await Client.Object.GetGameClips(1, null)).Count);
         }
 
         [Fact]
