@@ -17,6 +17,6 @@ namespace Atlas.Integration.Xbox
         Task<List<Friend>> GetFollowers(long xuid);
         Task<List<GameClip>> GetGameClips(long xuid, long? titleId = null);
         Task<List<GameClip>> GetSavedGameClips(long xuid);
-        Task<List<Screenshot>> GetScreenshots(long xuid);
+        Task<List<Screenshot>> GetScreenshots(long xuid, long? titleId = null);
     }
 }

@@ -92,9 +92,16 @@ namespace Atlas.Integration.Xbox
             return await this.client.GetAsync<List<GameClip>>($"{xuid}/game-clips/saved");
         }
 
-        public async Task<List<Screenshot>> GetScreenshots(long xuid)
+        public async Task<List<Screenshot>> GetScreenshots(long xuid, long? titleId = null)
         {
-            return await this.client.GetAsync<List<Screenshot>>($"{xuid}/screenshots");
+            string Uri = $"{xuid}/screenshots";
+
+            if (titleId.HasValue)
+            {
+                Uri += $"/{titleId.Value}";
+            }
+
+            return await this.client.GetAsync<List<Screenshot>>(Uri);
         }
     }
 }

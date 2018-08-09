@@ -184,10 +184,23 @@ namespace Atlas.Integration.Xbox.Test
             List<Screenshot> Expected = new List<Screenshot>();
 
             Client
-                .Setup(s => s.GetScreenshots(1))
+                .Setup(s => s.GetScreenshots(1, null))
                 .Returns(Task.FromResult(new List<Screenshot>()));
 
-            Assert.Equal(Expected.Count, (await Client.Object.GetScreenshots(1)).Count);
+            Assert.Equal(Expected.Count, (await Client.Object.GetScreenshots(1, null)).Count);
+        }
+
+        [Fact]
+        public async Task GetScreenshots_ReturnsScreenshotsByTitleId()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            List<GameClip> Expected = new List<GameClip>();
+
+            Client
+                .Setup(s => s.GetGameClips(1, null))
+                .Returns(Task.FromResult(new List<GameClip>()));
+
+            Assert.Equal(Expected.Count, (await Client.Object.GetGameClips(1, null)).Count);
         }
     }
 }
