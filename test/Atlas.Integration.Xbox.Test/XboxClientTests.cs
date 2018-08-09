@@ -176,5 +176,18 @@ namespace Atlas.Integration.Xbox.Test
 
             Assert.Equal(Expected.Count, (await Client.Object.GetSavedGameClips(1)).Count);
         }
+
+        [Fact]
+        public async Task GetScreenshots_ReturnsScreenshots()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            List<Screenshot> Expected = new List<Screenshot>();
+
+            Client
+                .Setup(s => s.GetScreenshots(1))
+                .Returns(Task.FromResult(new List<Screenshot>()));
+
+            Assert.Equal(Expected.Count, (await Client.Object.GetScreenshots(1)).Count);
+        }
     }
 }
