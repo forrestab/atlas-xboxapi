@@ -103,5 +103,10 @@ namespace Atlas.Integration.Xbox
 
             return await this.client.GetAsync<List<Screenshot>>(Uri);
         }
+
+        public async Task<GameStats> GetGameStats(long xuid, long titleId)
+        {
+            return await this.client.GetAsync<GameStats>($"{xuid}/game-stats/{titleId}");
+        }
     }
 }

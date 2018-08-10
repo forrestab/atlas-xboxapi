@@ -202,5 +202,18 @@ namespace Atlas.Integration.Xbox.Test
 
             Assert.Equal(Expected.Count, (await Client.Object.GetGameClips(1, null)).Count);
         }
+
+        [Fact]
+        public async Task GetGameStats_ReturnsGameStats()
+        {
+            Mock<IXboxClient> Client = new Mock<IXboxClient>();
+            GameStats Expected = new GameStats() { Groups = new List<GameStatsGroup>() };
+
+            Client
+                .Setup(s => s.GetGameStats(1, 1))
+                .Returns(Task.FromResult(new GameStats() { Groups = new List<GameStatsGroup>() }));
+
+            Assert.Equal(Expected.Groups.Count, (await Client.Object.GetGameStats(1, 1)).Groups.Count);
+        }
     }
 }

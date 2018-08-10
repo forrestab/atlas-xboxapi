@@ -18,5 +18,6 @@ namespace Atlas.Integration.Xbox
         Task<List<GameClip>> GetGameClips(long xuid, long? titleId = null);
         Task<List<GameClip>> GetSavedGameClips(long xuid);
         Task<List<Screenshot>> GetScreenshots(long xuid, long? titleId = null);
+        Task<GameStats> GetGameStats(long xuid, long titleId);
     }
 }
